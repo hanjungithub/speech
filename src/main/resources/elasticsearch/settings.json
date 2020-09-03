@@ -1,0 +1,28 @@
+{
+  "index": {
+    "analysis": {
+      "analyzer": {
+        "default": {
+          "tokenizer": "ik_max_word"
+        },
+        "pinyin_analyzer": {
+          "type":"custom",
+          "tokenizer":"ik_max_word",
+          "filter":"pinyin_filter"
+        }
+      },
+      "filter":{
+        "pinyin_filter":{
+          "type":"pinyin",
+          "keep_joined_full_pinyin": "true",
+          "keep_separate_first_letter" : "false",
+          "keep_full_pinyin" : true,
+          "keep_original":true,
+          "limit_first_letter_length" : 16,
+          "lowercase" : true,
+          "remove_duplicated_term" : true
+        }
+      }
+    }
+  }
+}

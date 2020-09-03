@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="speech" type="search"
+       x-webkit-speech speech />
+
+<script>
+    var speech = document.getElementById('speech');
+    if('webkitSpeechRecognition' in window) {
+        var recognition = new webkitSpeechRecognition();
+
+        recognition.onaudiostart = function(){
+            speech.value = '开始录音';
+        };
+
+        recognition.ononmatch = function(){
+            speech.value = '没有匹配结果，请再次尝试';
+        };
+
+        recognition.onerror = function(){
+            speech.value ='错误，请再次尝试';
+        };
+
+        // 如果得到与语音匹配的值，则会触发result事件。
+
+        recognition.onresult = function(event){
+            if(event.results.length > 0) {
+                var results = event.results[0];
+                var topResult = results[0];
+
+                if(topResult.confidence > 0.5) {
+                    alert(topResult.toString())
+
+                } else {
+                    speech.value = '请再次尝试';
+                }
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

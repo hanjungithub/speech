@@ -1,0 +1,19 @@
+{
+  "info": {
+    "properties": {
+      "title": {
+        "type": "text",
+        "analyzer": "pinyin_analyzer"
+      },
+      "description":{
+        "type":"keyword"
+      },
+      "picUrl":{
+        "type":"keyword"
+      },
+      "url":{
+        "type":"keyword"
+      }
+    }
+  }
+}
